@@ -1,0 +1,101 @@
+---
+layout: runbook
+title: '#4471: separate causes before merging'
+owner: support desk
+status: proposed
+reviewed: '2026-10-28'
+signature: 'OpenAI coding assistant for Kjalarr · S01E03'
+---
+
+<script>
+  import Callout from '#lib/kb/Callout.svelte';
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import QueueTimeline from '#lib/kb/QueueTimeline.svelte';
+  import DedupeExplorer from '#lib/kb/DedupeExplorer.svelte';
+  import ExportEvidence from '#lib/kb/ExportEvidence.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+<Callout kind="warn">
+Proposed guidance, not an accepted desk decision. This page renders the export dated
+2026-10-04, not a live queue. Course issue drafts do not change the support desk's tickets.
+Check the current desk before acting; the desk has continued working since the export.
+</Callout>
+
+## What the export shows
+
+The [incident page](/kb/incidents/4471) says one issue and one queued fix. Its own
+cause table disagrees. Treat the table as a classification of the supplied reports,
+not proof that the production parser or form has been fixed.
+
+<ExportEvidence />
+
+<CauseTable ticket={4471} />
+
+**Parser:** for day-first tenants, the shared parser reads dates month first.
+App and email reports, and reports through the day-first booking-v2 form, belong here.
+Keep this cause associated with support ticket #4471.
+
+**Hint:** the booking-v3 form prints `MM/DD/YYYY` for day-first tenants, while the
+form interprets input in the tenant's order. Following the hint reverses the intended
+day and month. This needs its own ticket and a form-hint fix; a shared-parser fix alone
+must not close it. The table's “no ticket of its own” describes the export only.
+
+The one-day-move footnote is not another count to add. Those reports remain in their
+computed cause. Their wording deserves investigation, but neither a timezone defect
+nor a third cause is established by this export. Preserve the desk notes and ask for
+the original input, expected date, actual date, tenant, entry channel and relevant
+timezones before reclassifying them.
+
+## Why the merged queue is misleading
+
+<QueueTimeline ticket={4471} />
+
+The chart separates receipt from merging. Reports arrived before they were collected
+into this ticket; the large merge burst is not the start of the incident. Reports also
+continue after that burst. A queue shrinking through merges is not evidence of a fix.
+The chart is bounded to the export, so its right edge cannot tell us whether reports
+stopped afterwards.
+
+## Proposed replacement for subject-only merging
+
+[Decision 0001](/kb/decisions/0001-dedupe-by-subject) and the
+[triage page](/kb/triage/dedupe) authorize matching normalized subjects without reading
+the body. Their review dates are stale under the knowledge base's own rule. Keep the
+accepted record intact; this proposed replacement needs desk approval before it
+supersedes that policy.
+
+1. Read the report and identify the tenant, locale, booking form and entry channel.
+   The browser's intake tag is a guess, not the tenant's configuration.
+2. Compare the underlying cause, not just the subject or the symptom. Different
+   subjects can describe the same cause; identical subjects can hide different causes.
+3. Merge only when the cause is established and matches. Keep parser and hint reports
+   apart, retain report IDs and count each ID once across overlapping export pages.
+4. With no tenant or insufficient evidence, leave the report unclassified and investigate.
+   “Unknown” is not a shared cause and is not permission to merge.
+5. Recheck the live queue before splitting or closing a ticket. Link the replacement
+   tickets and updated guidance once the desk approves them; do not invent ticket URLs.
+
+This classifier covers the supplied date incident, not every product the desk supports.
+For other symptoms, establish the cause instead of forcing a parser or hint label.
+
+## Try the distinction
+
+The explorer executes the supplied tenant lookup and cause logic. Change the channel
+or tenant while leaving the subject alone, then try changing only the subject.
+
+<DedupeExplorer />
+
+## Handoff to the desk
+
+The companion issues separate the shared-parser failure from the booking-v3 hint
+failure. Their counts are snapshot counts, not live totals. They include proposed
+product checks; the product implementation was not supplied, so those fixes have not
+been exercised here.
+
+Before changing the support desk's tickets, obtain its current ticket/tenant export and desk notes, check for
+an existing hint ticket or changed assignments, and reconcile new reports. No live-desk
+URL or feed is supplied in this export. The review date above records review of this
+snapshot, not a fresh check of production or approval of this proposal.
+
+<RenderStamp {signature} />
