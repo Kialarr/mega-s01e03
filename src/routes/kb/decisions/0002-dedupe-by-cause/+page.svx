@@ -19,8 +19,22 @@ signature: "v1.eyJzdWIiOiIyMzk0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpY
 <Callout kind="warn">
 Proposed guidance, not an accepted desk decision. This page renders the export dated
 2026-10-04, not a live queue. Course issue drafts do not change the support desk's tickets.
-Check the current desk before acting; the desk has continued working since the export.
+The course's later engineering update is recorded below; the tables remain the original export snapshot.
 </Callout>
+
+## Resolution update — 05 October
+
+The [course engineering update](https://hq.mega.dev/challenges/what-it-shows)
+reports support #4471 closed on 05 October:
+
+- **Parser — fixed:** `fix(dates): parse dd/mm for eu locales`.
+  [Parser issue](https://github.com/Kialarr/mega-s01e03/issues/1) is closed as completed.
+- **Hint — won't fix:** booking-v3 form retired.
+  [Hint issue](https://github.com/Kialarr/mega-s01e03/issues/2) is closed as not planned.
+  Retirement is not a hint fix and must not be described as one.
+
+These resolutions come from the course update, not tests against the product.
+The counts below describe the 04 October export; they are not current queue totals.
 
 ## What the export shows
 
@@ -38,8 +52,9 @@ Keep this cause associated with support ticket #4471.
 
 **Hint:** the booking-v3 form prints `MM/DD/YYYY` for day-first tenants, while the
 form interprets input in the tenant's order. Following the hint reverses the intended
-day and month. This needs its own ticket and a form-hint fix; a shared-parser fix alone
-must not close it. The table's “no ticket of its own” describes the export only.
+day and month. At export time this needed its own ticket; the shared-parser fix alone
+would not resolve it. The later decision was not to fix the hint because booking-v3
+was retired. The table's “no ticket of its own” describes the export only.
 
 The one-day-move footnote is not another count to add. Those reports remain in their
 computed cause. Their wording deserves investigation, but neither a timezone defect
@@ -93,9 +108,9 @@ failure. Their counts are snapshot counts, not live totals. They include propose
 product checks; the product implementation was not supplied, so those fixes have not
 been exercised here.
 
-Before changing the support desk's tickets, obtain its current ticket/tenant export and desk notes, check for
-an existing hint ticket or changed assignments, and reconcile new reports. No live-desk
-URL or feed is supplied in this export. The review date above records review of this
-snapshot, not a fresh check of production or approval of this proposal.
+The companion issues now record the course's distinct closure decisions above.
+No live report feed or production implementation was supplied. Further operational
+changes require fresh desk evidence. The review date records review of this snapshot
+and the course engineering update, not product testing or desk approval of this policy proposal.
 
 <RenderStamp {signature} />
