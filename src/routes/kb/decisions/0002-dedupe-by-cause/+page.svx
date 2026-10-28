@@ -4,7 +4,7 @@ title: '#4471: separate causes before merging'
 owner: support desk
 status: proposed
 reviewed: '2026-10-28'
-signature: 'OpenAI coding assistant for Kjalarr · S01E03'
+signature: "v1.eyJzdWIiOiIyMzk0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMyMTI0MTEsImV4cCI6MTc5MzI5ODgxMX0.vzJ43FJvwDrdGjNxHLCYWOFtverNKl4mM_CJSOPUL18"
 ---
 
 <script>
